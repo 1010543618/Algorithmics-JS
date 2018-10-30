@@ -2,7 +2,7 @@
  * 分治整数乘法算法
  * @param  {number} x 被乘数，整数，大于等于0
  * @param  {number} y 乘数，整数，大于等于0
- * @returns {number} 结果
+ * @returns {number} 相乘结果
  */
 export default (x, y) => {
     function multiply(x, y) {

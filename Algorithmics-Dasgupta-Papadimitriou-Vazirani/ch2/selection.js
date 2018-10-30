@@ -1,7 +1,8 @@
 /**
  * 找出数组中第k小的元素的值
  * @param  {Array<number>} arr 待查找的数组
- * @param  {number} k 大于等于0，小于数组长度的整数
+ * @param  {number} k 大于等于1，小于数组长度的整数
+ * @returns {number} 第k小的元素的值
  */
 export default (arr, k) => {
     function selection(arr, k) {
