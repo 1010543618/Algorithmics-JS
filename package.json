@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "tape": "^4.9.1"
+    "gulp": "^3.9.1",
+    "rollup": "^0.66.6",
+    "tape": "^4.9.1",
+    "through2": "^2.0.3"
+  },
+  "dependencies": {
   }
 }
