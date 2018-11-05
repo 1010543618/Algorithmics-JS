@@ -5,7 +5,6 @@ const Complex = require("../build/Complex");
 const FFT = require("../build/FFT");
 
 tape("FFT", ((test) => {
-    console.log(this)
     var expect = [3, -1].map(d => {
         return new Complex(d, 0);
     });
