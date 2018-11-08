@@ -24,7 +24,10 @@ function gulpfiles() {
                 input: file.path
             });
 
-            await bundle.write({file: file.base + 'build\\' + file.relative, format: 'cjs'});
+            await bundle.write({
+                file: file.base + 'build\\' + file.relative,
+                format: 'cjs'
+            });
             return;
         }
 
