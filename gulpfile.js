@@ -4,12 +4,12 @@ const through = require('through2');
 
 gulp.task('build', async function () {
     // 将你的默认的任务代码放在这
-    gulp.src(['./Algorithmics-Dasgupta-Papadimitriou-Vazirani/ch3/*.js'])
+    gulp.src(['./Algorithmics-Dasgupta-Papadimitriou-Vazirani/ch4/*.js'])
         .pipe(gulpfiles())
         .pipe(gulp.dest('build'));
 });
 
-gulp.watch('./Algorithmics-Dasgupta-Papadimitriou-Vazirani/ch3/*.js', ['build']);
+gulp.watch('./Algorithmics-Dasgupta-Papadimitriou-Vazirani/ch4/*.js', ['build']);
 
 gulp.task('default', ['build']);
 
@@ -24,7 +24,10 @@ function gulpfiles() {
                 input: file.path
             });
 
-            await bundle.write({file: file.base + 'build\\' + file.relative, format: 'cjs'});
+            await bundle.write({
+                file: file.base + 'build\\' + file.relative,
+                format: 'cjs'
+            });
             return;
         }
 

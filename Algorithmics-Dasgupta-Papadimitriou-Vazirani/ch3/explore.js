@@ -1,19 +1,21 @@
-export default (G, v)=>{
-    // 复制
-    let _G = Object.assign({}, G), reachable = [];
-    
-    explore(_G, v)
+import _ from "lodash";
 
-    return reachable;
+export default (G, v) => {
+    let _G = _.cloneDeep(G),
+        reachable = [];
 
-    function explore(G,v){
+    function explore(G, v) {
         reachable.push(v);
         G[v].visited = true;
         G[v].forEach(d => {
-            if(!G[d].visited){
-                explore(G,d);
+            if (!G[d].visited) {
+                explore(G, d);
             }
         });
     }
     
+    explore(_G, v)
+
+    return reachable;
 }
+

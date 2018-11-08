@@ -1,23 +1,29 @@
-export default (G) => {
-    var forest = [],
-        tree = [];
-    for (let v in G) {
-        if (!G[v].visited) {
-            explore(G, v);
-            forest.push(tree);
-            tree = [];
-        }
-    }
+import _ from "lodash";
 
-    return forest;
+export default (G) => {
+    let _G = _.cloneDeep(G),
+        forest = [],
+        tree = [];
 
     function explore(G, v) {
-        tree.push(v);
         G[v].visited = true;
         G[v].forEach(d => {
             if (!G[d].visited) {
                 explore(G, d);
             }
         });
+        // 出栈
+        tree.push(v);
     }
+
+    for (let v in _G) {
+        if (!_G[v].visited) {
+            explore(_G, v);
+            forest.push(tree);
+            tree = [];
+        }
+    }
+    
+    return forest;
 }
+
