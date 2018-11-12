@@ -3,7 +3,6 @@ import _ from "lodash";
 export default (G, el, v) => {
     let dist = {},
         prev = {},
-        // 感觉这个优先队列没有什么用，最后还是所有点遍历一遍
         H = [],
         u, new_l;
 
@@ -18,6 +17,10 @@ export default (G, el, v) => {
     });
 
     while (H.length > 0) {
+        // 用d堆更高效
+        for (let i = H.length - 1; i >= 1; i--) {
+            H[i].v < H[i - 1].v && ([H[i], H[i - 1]] = [H[i - 1], H[i]]);
+        }
         u = H.shift().k;
         G[u].forEach((rv, i) => {
             new_l = dist[u] + +el[u][i];
@@ -25,14 +28,16 @@ export default (G, el, v) => {
             if (dist[rv] > new_l) {
                 dist[rv] = new_l;
                 prev[rv] = u;
-                H.push({
+
+                let cn = H.find(d => d.k == rv);
+                cn ? cn.v = dist[rv] : H.push({
                     k: rv,
                     v: dist[rv]
                 });
             }
         });
-        H.sort((a, b) => a.v > b.v);
     }
 
+    console.log(prev);
     return dist;
 }
