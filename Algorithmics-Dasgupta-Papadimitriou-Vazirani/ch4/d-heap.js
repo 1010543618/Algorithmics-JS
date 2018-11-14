@@ -10,12 +10,11 @@ export default class DHeap {
         this.heap.push(val);
 
         if (this.heap.length <= this.d) {
-            return;
+            return this.heap;
         }
 
         let ci = this.heap.length - 1,
             pi = Math.floor((ci - 1) / this.d);
-
 
         while (pi >= 0) {
             if (this.heap[pi] > this.heap[ci]) {
@@ -23,7 +22,7 @@ export default class DHeap {
                 ci = pi;
                 pi = Math.floor((pi - 1) / this.d);
             } else {
-                return;
+                return this.heap;
             }
         }
     }
@@ -63,13 +62,3 @@ export default class DHeap {
         return heap.pop();
     }
 }
-
-var a = new DHeap([7, 6, 5, 4]);
-a.insert(3);
-a.insert(2);
-a.insert(1);
-console.log(a.heap); //[1, 4, 2, 6, 5, 7, 3]
-a.delete();
-console.log(a.heap); //[2, 4, 3, 6, 5, 7]
-a.delete();
-console.log(a.heap); //[3, 4, 7, 6, 5]
