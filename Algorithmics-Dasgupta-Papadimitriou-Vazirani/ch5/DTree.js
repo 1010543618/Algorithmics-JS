@@ -1,16 +1,18 @@
 // Directed Tree
 export default class DTree {
     constructor(u) {
-        return {
+        let v = {
             parent: null,
             value: u,
             rank: 0
         }
+        v.parent = v;
+        return v;
     }
 
     static find(s) {
-        while (s.parent !== null) s = s.parent;
-        return s;
+        s !== s.parent && (s.parent = this.find(s.parent));
+        return s.parent;
     }
 
     static union(s1, s2) {
