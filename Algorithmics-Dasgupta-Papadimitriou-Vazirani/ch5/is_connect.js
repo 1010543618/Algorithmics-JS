@@ -1,8 +1,9 @@
 export default (G, con) => {
-    con.forEach(c => {
-        if (!G[c[0]].find(c[1]) && !G[c[1]].find(c[0])) {
+    for (let i = 0; i < con.length; i++) {
+        const c = con[i];
+        if (G[c[0]] && !G[c[0]].find(d => d == c[1]) && G[c[1]] && !G[c[1]].find(d => d == c[0])) {
             return false;
         }
-    });
+    }
     return true;
 }
